@@ -1,0 +1,62 @@
+# Окружение и кэши
+.venv/
+.cache/
+__pycache__/
+*.pyc
+.env
+.env.*
+.vs/
+.vscode/
+.idea/
+
+# Веса: дообученные голоса, whisper и прочее. Живут на машинах, не в гите
+models/
+*.pt
+*.pth
+*.safetensors
+*.onnx
+latest_silero_models.yml
+
+# Датасеты и всё, что из них получено. Условия у Маши — data/dialogs/LICENSE.md
+data/
+dataset/wavs/
+dataset/texts.txt
+dataset/eval_*.json
+dataset/*prosody_ab.json
+dataset/rejected.jsonl
+dataset/train_raw.jsonl
+*.log
+
+# Чужой код со своей историей
+vosk-train/
+
+# Аватары и движения: условия запрещают выкладывать (Kuroto VN3, пак Sway) или
+# требуют отдельной атрибуции (VRoid). Настройки аватаров и motions.json остаются
+assets/
+static/models/*.vrm
+static/motions/*/
+
+# Сгенерированные пробы голоса, среди них опыты с клонированием
+static/samples/
+
+# Голосовые образцы и их расшифровки
+voices/
+
+# Готовые кружочки и сценарии проб
+video/out/
+video/sample.txt
+video/today-*.txt
+
+# Unity: в гите только скрипты и настройки проекта
+unity-bake/Library/
+unity-bake/Logs/
+unity-bake/Temp/
+unity-bake/Obj/
+unity-bake/UserSettings/
+unity-bake/Shots/
+unity-bake/Assets/Model/
+unity-bake/Assets/Model.meta
+unity-bake/Assets/Anims/
+unity-bake/Assets/Anims.meta
+unity-bake/*.csproj
+unity-bake/*.slnx

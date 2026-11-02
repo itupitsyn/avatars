@@ -1,0 +1,5 @@
+# Код уходит в контейнеры на Linux, поэтому в репозитории всегда LF
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.ico binary

@@ -1,0 +1,38 @@
+# Сервис кружочков рядом с ai-api-stuff на .90. Запуск из корня комплекта (/home/user/apps/mika):
+#   docker compose -f video/docker-compose.yml up -d --build
+# ai-api-stuff зовёт его по имени в своей сети (MIKA_NOTES_URL=http://mika-notes:8190) — наружу порт не открыт.
+services:
+  mika-notes:
+    build:
+      context: ..
+      dockerfile: video/Dockerfile
+    container_name: mika-notes
+    restart: unless-stopped
+    shm_size: '2gb'  # Chrome держит кадры в /dev/shm
+    volumes:
+      - ..:/mika:ro
+      # веса whisper качаются при первом запуске и живут между пересборками
+      - ../.cache:/root/.cache
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all  # graphics — чтобы Chrome рисовал на карте, а не процессором
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu, utility, compute, graphics]
+    # узлы карт явно — по той же причине, что у ai-api-stuff (обновление systemd 15.10.2026 отбирало права)
+    devices:
+      - /dev/nvidia0:/dev/nvidia0
+      - /dev/nvidia1:/dev/nvidia1
+      - /dev/nvidiactl:/dev/nvidiactl
+      - /dev/nvidia-uvm:/dev/nvidia-uvm
+      - /dev/nvidia-uvm-tools:/dev/nvidia-uvm-tools
+    networks:
+      - ai-api-stuff_default
+
+networks:
+  ai-api-stuff_default:
+    external: true

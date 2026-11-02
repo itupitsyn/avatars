@@ -1,0 +1,43 @@
+{
+  "idle": [
+    "mixamo/idle.fbx",
+    "mixamo/happy_idle.fbx",
+    "mixamo/breathing_idle.fbx",
+    "mixamo/weight_shift.fbx"
+  ],
+  "talk": [],
+  "gestures": {
+    "think": "mixamo/thinking.fbx",
+    "explain": "mixamo/talking_2.fbx",
+    "shrug": "mixamo/shrugging.fbx",
+    "cheer": "mixamo/cheering.fbx",
+    "bow": "mixamo/bow.fbx",
+    "nod": "mixamo/head_nod.fbx",
+    "shake": "mixamo/head_shake.fbx",
+    "jump": "mixamo/jump.fbx",
+    "dance": "mixamo/samba.fbx",
+    "greet": "mixamo/waving.fbx",
+    "peace": {
+      "file": "vroid/VRMA_03.vrma",
+      "to": 5.0
+    },
+    "bang": {
+      "file": "vroid/VRMA_04.vrma",
+      "to": 7.0
+    },
+    "pose": {
+      "file": "vroid/VRMA_06.vrma",
+      "to": 6.5
+    },
+    "show": {
+      "file": "vroid/VRMA_01.vrma",
+      "to": 9.5
+    },
+    "shy": "baked/shy.json",
+    "gasp": "baked/surprised.json",
+    "giggle": "baked/mouth.json",
+    "heart": "baked/chest.json",
+    "hug": "baked/comeon.json"
+  },
+  "credits": "Анимации: pixiv Inc. VRoid Project (Animation credits to pixiv Inc.'s VRoid Project)"
+}

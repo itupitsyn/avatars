@@ -1,0 +1,33 @@
+[project]
+name = "avatars"
+version = "0.1.0"
+description = "Голосовой собеседник с рисованным аватаром: микрофон -> whisper -> LLM -> Qwen3-TTS -> браузер"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "torch",
+    "torchaudio",
+    "faster-whisper",
+    "faster-qwen3-tts",
+    # 5.20 ломает конфиг звукового кодека Qwen3-TTS (MimiConfig без rope_theta); на 5.15.1 проверено
+    "transformers==5.15.1",
+    "silero",
+    "fastapi",
+    "uvicorn[standard]",
+    "httpx",
+    "numpy",
+    "num2words",
+    "scipy>=1.17.1",
+    "librosa>=0.11.0",
+    "soundfile>=0.14.0",
+]
+
+# torch с CUDA берём с индекса PyTorch: в его колёсах лежат cuDNN 9 и cuBLAS 12,
+# которыми заодно пользуется faster-whisper (см. server.py).
+[tool.uv.sources]
+torch = { index = "pytorch-cu126" }
+torchaudio = { index = "pytorch-cu126" }
+
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true
